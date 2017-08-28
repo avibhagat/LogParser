@@ -1,0 +1,6 @@
+mysqlclient
+pyyaml
+requests
+sqlalchemy
+ua-parser
+user-agents

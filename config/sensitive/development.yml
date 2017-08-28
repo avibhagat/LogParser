@@ -1,0 +1,4 @@
+database:
+  user: avi
+  pass: bhagat
+  host: localhost
