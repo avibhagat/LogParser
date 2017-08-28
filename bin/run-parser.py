@@ -12,7 +12,7 @@ def lookup_files():
 # Parse arguments
 def get_args():
     parser = argparse.ArgumentParser(description='Parse arguments')
-    parser.add_argument('-f', '--file', dest='file', metavar="file", type=str, help='log "file" to parse')
+    parser.add_argument('-f', '--file', dest='file', metavar="file", type=str, help='full path to log "file" to parse')
     parser.add_argument('-l', '--list-files', dest='list_available_files', action='store_true', help='show list of files available to parse')
 
     try:

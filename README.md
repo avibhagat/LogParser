@@ -7,7 +7,7 @@ execute this command install dependencies:
 pip3 install -r requirements.txt
 
 There is sleep command while executing api call to map ip address to geo data. The reason is "http://ip-api.com/" will
-ban ip address with more than 150 requests a min. You can comment line 21 in lib/log-parser.py to make code faster.
+ban ip address with more than 150 requests per minute. You can comment line 21 in lib/log-parser.py to make code faster.
 
 File to parse has to be in "PROJECT_ROOT/resources/" folder
 
@@ -17,7 +17,7 @@ Parse arguments
 
 optional arguments:
   -h, --help            show this help message and exit
-  -f file, --file file  log "file" to parse
+  -f file, --file file  full path to log "file" to parse
   -l, --list-files      show list of files available to parse
 
 Example:
