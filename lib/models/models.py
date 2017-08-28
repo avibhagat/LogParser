@@ -40,7 +40,7 @@ class IpMapping(Base, PrintObject):
 
     @classmethod
     def fetch(cls, ip_address):
-        # Create IpMapping object only if IpMapping object doesn't exists
+        # Make api call only if ip address not present in db.
         ip_obj = session.query(cls).filter_by(ip_address=ip_address).first()
         if ip_obj is None:
             ip_obj = cls.make_api_call(ip_address)
