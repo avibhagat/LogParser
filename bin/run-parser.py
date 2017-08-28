@@ -9,7 +9,7 @@ from lib.log_parser import LogParser
 def lookup_files():
     return glob.glob(os.path.abspath("{0}/../resources/*.log".format(os.path.dirname(__file__))))
 
-
+# Parse arguments
 def get_args():
     parser = argparse.ArgumentParser(description='Parse arguments')
     parser.add_argument('-f', '--file', dest='file', metavar="file", type=str, help='log "file" to parse')
@@ -27,6 +27,7 @@ def get_args():
         parser.print_help()
         parser.exit(1)
 
+# Start point of code
 if __name__ == '__main__':
     args = get_args()
     with warnings.catch_warnings():

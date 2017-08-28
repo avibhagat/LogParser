@@ -40,10 +40,10 @@ class IpMapping(Base, PrintObject):
 
     @classmethod
     def fetch(cls, ip_address):
+        # Create IpMapping object only if IpMapping object doesn't exists
         ip_obj = session.query(cls).filter_by(ip_address=ip_address).first()
         if ip_obj is None:
             ip_obj = cls.make_api_call(ip_address)
-
         return ip_obj
 
     @classmethod
@@ -87,19 +87,20 @@ class DeviceInfo(Base, PrintObject):
         else:
             device = 'Other'
 
+        # Create device_info_obj only if it doesn't exist
         device_info_obj = session.query(cls).filter_by(browser=browser, device_type=device, operating_system=os).first()
         if device_info_obj is None:
             device_info_obj = cls(browser=browser, device_type=device, operating_system=os)
-
         return device_info_obj
 
 
 class MappingDeviceInfoLink(Base, PrintObject):
-
     __tablename__ = 'mapping_deviceinfo_link'
     ip_mapping_id = Column(Integer, ForeignKey('ip_mapping.id'), primary_key=True)
     device_info_id = Column(Integer, ForeignKey('device_info.id'), primary_key=True)
     notes = Column(String)
+
+    # creating relationship to keep db in normalized form
     ip_mapping = relationship(IpMapping, backref=backref("ip_mapping_assoc"))
     device_info = relationship(DeviceInfo, backref=backref("device_info_assoc"))
 
